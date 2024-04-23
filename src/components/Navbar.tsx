@@ -21,7 +21,7 @@ const Navbar = () => {
   return (
     <div className='flex justify-between items-center h-24 w-full mx-auto text-white px-16'>
       {/* Logo */}
-      <h1 className='w-full text-3xl font-bold bg-gradient-to-r from-cyan-500 to-blue-500 inline-block text-transparent bg-clip-text'>Persona Probe</h1>
+      <h1 className='w-full text-3xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500  inline-block text-transparent bg-clip-text'>Persona Probe</h1>
 
       {/* Desktop Navigation */}
       <ul className='hidden md:flex'>
