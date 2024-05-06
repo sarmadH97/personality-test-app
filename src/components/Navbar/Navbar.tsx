@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -14,14 +15,14 @@ const Navbar = () => {
 
   // Array containing navigation items
   const navItems = [
-    { id: 1, text: "Home", url: `/`},
-    { id: 2, text: "About the test" },
-    { id: 3, text: "Take the test", url:"/Takethetest" },
-    { id: 4, text: "Meet the Dev" },
+    { id: 1, text: "Home", url: `/` },
+    { id: 2, text: "About the test", url: "aboutthetest" },
+    { id: 3, text: "Take the test", url: "/Takethetest" },
+    { id: 4, text: "Meet the Dev", url: "meetthedev" },
   ];
 
   return (
-    <div className="flex justify-between items-center h-24 w-full mx-auto text-white px-16">
+    <div className="w-full flex justify-between items-center h-24 mx-auto text-white px-16">
       <div className="flex flex-row justify-between w-full">
         <div>
           <h1 className="w-full pt-2 text-3xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500  inline-block text-transparent bg-clip-text">
@@ -33,11 +34,18 @@ const Navbar = () => {
             <div
               key={item.id}
               className="p-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl m-2 cursor-pointer duration-300 hover:text-black"
-              onClick={()=>{
-                navigate(`${item.url}`)
-              }}
             >
-              {item.text}
+              {item.id === 1 || item.id === 3 ? (
+                <div
+                  onClick={() => {
+                    navigate(`${item.url}`);
+                  }}
+                >
+                  {item.text}
+                </div>
+              ) : (
+                <AnchorLink href={`#${item.url}`} >{item.text}</AnchorLink>
+              )}
             </div>
           ))}
         </div>

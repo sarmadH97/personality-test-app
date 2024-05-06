@@ -1,6 +1,6 @@
-import Background from "../components/Background";
-import Flipcard from "../components/Flipcard";
-import Navbar from "../components/Navbar";
+import Background from "../components/Background/Background";
+import Flipcard from "../components/Flipcard/Flipcard";
+import Navbar from "../components/Navbar/Navbar";
 
 const Home = () => {
   return (
@@ -10,7 +10,7 @@ const Home = () => {
         <>
           <Navbar />
         </>
-        <div className="px-16 rounded-lg mt-12 h-80 w-full">
+        <div className="px-16 mt-12 h-80">
           <div className="p-6 w-full flex flex-col items-center">
             <p className="text-6xl uppercase pb-8 text-center">Are you</p>
             <p className="text-6xl uppercase pb-8 text-center">an</p>
@@ -41,7 +41,14 @@ const Home = () => {
               explored.
             </p>
           </div>
+          {/* <div className="px-16 mt-12 h-80 w-full" id="aboutthetest">
+            About the test
+          </div>
+          <div className="px-16 mt-12 h-80 w-full" id="meetthedev">
+            Meet the dev
+          </div> */}
         </div>
+        
       </div>
     </div>
   );
