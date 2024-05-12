@@ -17,8 +17,8 @@ const Home = () => {
             <Flipcard frontText="Introvert ?" backtext="Extrovert ?" />
           </div>
           <div className="p-6">
-            <h1 className="text-4xl bg-gradient-to-r from-cyan-500 to-blue-500 inline-block text-transparent bg-clip-text pb-6">
-              Welcome to Persona Probe!
+            <h1 className="text-4xl font-semibold pb-6">
+              Welcome to <p className="bg-gradient-to-r from-cyan-500 to-blue-500 inline-block text-transparent bg-clip-text">Persona Probe!</p>
             </h1>
             <p className="text-xl pb-4">
               Unlock the mysteries of your personality with our innovative

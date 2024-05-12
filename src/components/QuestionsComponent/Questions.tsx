@@ -3,19 +3,20 @@ import { Question } from "../../interfaces/interfaces";
 
 interface questionProps {
   question: Question;
+  getAnswers: (val : string)=>void
 }
 
-const Questions = ({ question }: questionProps) => {
+const Questions = ({ question, getAnswers }: questionProps) => {
   const onSubmit = (event: FormEvent) => {
     const form = event.target as HTMLFormElement;
     event.preventDefault();
-    console.log(form.answer.value);
+    getAnswers(form.answer.value)
   };
   return (
-    <div className="flex flex-col">
-      <form onSubmit={onSubmit}>
-        <div>{question.question}</div>
-        <div className="flex flex-col">
+    <div className="flex flex-col w-full">
+      <form onSubmit={onSubmit} className="">
+        <div className="text-center text-5xl font-semibold">{question.question}</div>
+        <div className="text-center grid grid-cols-2">
           {question?.answers.map((answer, index) => {
             return (
               <label
