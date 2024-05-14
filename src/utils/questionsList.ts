@@ -166,4 +166,24 @@ const questionsList = [
 	},
 ];
 
-export default questionsList;
+const introvertAnswers=[
+    "Interrupt and explain that you are really busy at the moment",
+    "Look at your watch every two minutes",
+    "Ask you to tell a story in front of everyone else",
+    "Think it’s for the best — it was a lame joke anyway",
+    "Question your colleagues about a project that’s been worrying you",
+    "Ask lots of questions to learn more about it",
+    "Give them a hand, as usual",
+    "Don’t want anyone to find out, so you take the bus instead",
+    "Rehearse ad nauseam the arguments and ideas that you’ve prepared for the meeting"
+]
+
+const extrovertAnswers=[
+    "Make sure that everyone is able to hear properly",
+    "State your point of view with enthusiasm",
+    "Shoot some friendly smiles in their direction",
+    "Tell them, ‘You’re too much! Have you seen the time?’"
+]
+
+
+export {extrovertAnswers, questionsList, introvertAnswers }

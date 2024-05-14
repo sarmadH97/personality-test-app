@@ -1,37 +1,47 @@
 import { useState } from "react";
 import Background from "../components/Background/Background";
 import Navbar from "../components/Navbar/Navbar";
-import QuestionsComponent from "../components/QuestionsComponent/Questions";
-import questionsList from "../questionJson/questionsList";
+import QuestionsComponent from "../components/Questions/Questions";
+import {
+  extrovertAnswers,
+  introvertAnswers,
+  questionsList,
+} from "../utils/questionsList";
 import svg from "../assets/undraw_content_team_re_6rlg.svg";
 import { motion } from "framer-motion";
+import { returnColoredText, returnType } from "../utils/utils";
 
 const TestQuestions = () => {
-  let ansScore = 0;
-  let currIndex = 0;
   const allQuestions = questionsList;
-  const [currentQuestion, setCurrentQuestion] = useState(allQuestions[13]);
+  const [currIndex, setCurrIndex] = useState(0);
+  const [introvertCount, setIntrovertCount] = useState(0);
+  const [extrovertCount, setExtrovertCount] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(allQuestions[0]);
   const [showResult, setShowResult] = useState(false);
   const [showQuestions, setShowQuestions] = useState(false);
 
-  function getAnswers(ans: string) {
-    currIndex = allQuestions.indexOf(currentQuestion);
+  const getAnswers = (ans: string) => {
+    setCurrIndex((prevIndex) => prevIndex + 1);
     setCurrentQuestion(allQuestions[currIndex + 1]);
-    if (currentQuestion.correct === ans) {
-      ansScore += 1;
+    if (introvertAnswers.includes(ans)) {
+      setIntrovertCount((prevCount) => prevCount + 1);
+    } else if (extrovertAnswers.includes(ans)) {
+      setExtrovertCount((prevCount) => prevCount + 1);
     }
     if (currIndex === allQuestions.length - 1) {
       setShowResult(true);
     }
-  }
+  };
 
-  function returnColoredText(text: string) {
-    return (
-      <p className="font-bold bg-gradient-to-r from-blue-500 to-cyan-500 inline-block text-transparent bg-clip-text ">
-        {text}
-      </p>
-    );
-  }
+  const resultTest = () => {
+    setShowQuestions(true);
+    setShowResult(false);
+    setCurrentQuestion(allQuestions[0]);
+    setCurrIndex(0);
+    setIntrovertCount(0);
+    setExtrovertCount(0);
+  };
+
   return (
     <div className="w-screen h-screen bg-white">
       <Background />
@@ -51,14 +61,14 @@ const TestQuestions = () => {
               </div>
               <div className="flex justify-center mt-12">
                 <motion.button
-                  className="p-4 text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl m-2 cursor-pointer duration-300 hover:text-black"
+                  className="p-4 text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl m-2 cursor-pointer duration-300 "
                   onClick={() => {
                     setShowQuestions(true);
                   }}
                   whileHover={{
-                    scale: 1.5  ,
-                    textShadow:"0px 0px 8px rgb(255,255,255)",
-                    boxShadow:"0px 0px 8px rgb(255,255,255)",
+                    scale: 1.5,
+                    textShadow: "0px 0px 8px rgb(255,255,255)",
+                    boxShadow: "0px 0px 8px rgb(255,255,255)",
                   }}
                 >
                   Start the Quiz
@@ -67,12 +77,31 @@ const TestQuestions = () => {
             </>
           ) : (
             <>
-              <div className="m-24">
-                <QuestionsComponent
-                  question={currentQuestion}
-                  getAnswers={getAnswers}
-                />
-              </div>
+              {showResult ? (
+                <div>
+                  {returnType(introvertCount, extrovertCount)}
+                  <div className="flex justify-center">
+                    <motion.button
+                      className="px-20 py-6 text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl m-2 cursor-pointer duration-300 "
+                      onClick={resultTest}
+                      whileHover={{
+                        scale: 1.5,
+                        textShadow: "0px 0px 8px rgb(255,255,255)",
+                        boxShadow: "0px 0px 8px rgb(255,255,255)",
+                      }}
+                    >
+                      Restart the Quiz
+                    </motion.button>
+                  </div>
+                </div>
+              ) : (
+                <div className="m-24">
+                  <QuestionsComponent
+                    question={currentQuestion}
+                    getAnswers={getAnswers}
+                  />
+                </div>
+              )}
             </>
           )}
         </div>
