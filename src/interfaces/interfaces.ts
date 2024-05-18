@@ -6,3 +6,8 @@ export interface Question{
 
 }
 
+export interface questionProps {
+    question: Question;
+    getAnswers: (val: string) => void;
+  }
+  

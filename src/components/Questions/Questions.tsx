@@ -1,16 +1,13 @@
 import { FormEvent } from "react";
-import { Question } from "../../interfaces/interfaces";
+import { questionProps } from "../../interfaces/interfaces";
 import { motion } from "framer-motion";
 
-interface questionProps {
-  question: Question;
-  getAnswers: (val: string) => void;
-}
 
 const Questions = ({ question, getAnswers }: questionProps) => {
   const onSubmit = (event: FormEvent) => {
     const form = event.target as HTMLFormElement;
     event.preventDefault();
+    console.log(form.answer,'what')
     getAnswers(form.answer.value);
   };
   return (
@@ -29,6 +26,7 @@ const Questions = ({ question, getAnswers }: questionProps) => {
               >
                 <label htmlFor={`ans-${index}`}>
                   <input
+                    data-testId={`ans-${index}`}
                     type="radio"
                     name="answer"
                     value={answer}
@@ -45,6 +43,7 @@ const Questions = ({ question, getAnswers }: questionProps) => {
         {question && (
           <div className="flex justify-center">
             <motion.button
+              data-testid="submitBtn"  
               className="px-20 py-6 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl m-2 cursor-pointer duration-300 text-white"
               type="submit"
               whileHover={{

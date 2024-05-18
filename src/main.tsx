@@ -6,8 +6,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import Home from './pages/Home.tsx'
-import TestQuestions from './pages/TestQuestions.tsx';
+import Home from './pages/Home/Home.tsx'
+import TestQuestions from './pages/TestQuestions/TestQuestions.tsx';
 
 
 const router = createBrowserRouter([

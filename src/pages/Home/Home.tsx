@@ -1,6 +1,6 @@
-import Background from "../components/Background/Background";
-import Flipcard from "../components/Flipcard/Flipcard";
-import Navbar from "../components/Navbar/Navbar";
+import Background from "../../components/Background/Background";
+import Flipcard from "../../components/Flipcard/Flipcard";
+import Navbar from "../../components/Navbar/Navbar";
 
 const Home = () => {
   return (

@@ -1,15 +1,15 @@
 import { useState } from "react";
-import Background from "../components/Background/Background";
-import Navbar from "../components/Navbar/Navbar";
-import QuestionsComponent from "../components/Questions/Questions";
+import Background from "../../components/Background/Background";
+import Navbar from "../../components/Navbar/Navbar";
+import QuestionsComponent from "../../components/Questions/Questions";
 import {
   extrovertAnswers,
   introvertAnswers,
   questionsList,
-} from "../utils/questionsList";
-import svg from "../assets/undraw_content_team_re_6rlg.svg";
+} from "../../utils/questionsList";
+import svg from "../../assets/undraw_content_team_re_6rlg.svg";
 import { motion } from "framer-motion";
-import { returnColoredText, returnType } from "../utils/utils";
+import { returnColoredText, returnType } from "../../utils/utils";
 
 const TestQuestions = () => {
   const allQuestions = questionsList;
@@ -34,7 +34,7 @@ const TestQuestions = () => {
   };
 
   const resultTest = () => {
-    setShowQuestions(true);
+    setShowQuestions(false);
     setShowResult(false);
     setCurrentQuestion(allQuestions[0]);
     setCurrIndex(0);
